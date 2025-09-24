@@ -1,21 +1,22 @@
-// Insertion sort
 #include <stdio.h>
-
-void inseSort(int arr[],int size){
-    for(int i =1;i<size;i++){
-        int key = arr[i];
-        int j = i-1;
-        while(j >=0 && arr[j]>key){
-            arr[j+1] = arr[j];
-            j-=1;
+// arr = [3,2,5,1,0]
+void selectionSort(int arr[], int size){
+    for(int i=0;i<size;i++){
+        int smallest = i;
+        int j=i+1;
+        for(j;j<size;j++){
+            if(arr[j]<arr[smallest]){
+                smallest = j;
+            }
         }
-        arr[j+1] = key;
+        int temp = arr[i];
+        arr[i] = arr[smallest];
+        arr[smallest] = temp;
     }
     printf("Sorted Array: ");
     for(int i=0;i<size;i++){
         printf("%d ",arr[i]);
     }
-
 }
 
 
@@ -43,7 +44,7 @@ void main(){
                 printf("%d ",arr[i]);
             }
             printf("\n");
-            inseSort(arr,x);
+            selectionSort(arr,x);
         }
     }
 }

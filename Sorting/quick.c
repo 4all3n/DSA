@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 void quickSort(int arr[],int size);
-void divide(int arr[],int low,int high);
+void quickSortRecursion(int arr[],int low,int high);
 int partition(int arr[],int low,int high);
 
 void quickSort(int arr[],int size){
-    divide(arr,0,size-1);
+    quickSortRecursion(arr,0,size-1);
     printf("Sorted Array: ");
     for(int i=0;i<size;i++){
         printf("%d ",arr[i]);
@@ -19,11 +19,11 @@ void swap(int *x,int *y){
 }
 
 
-void divide(int arr[],int low,int high){
+void quickSortRecursion(int arr[],int low,int high){
     if(low < high){
         int pivot_index = partition(arr,low,high);
-        divide(arr,low,pivot_index -1); //left side
-        divide(arr,pivot_index+1,high); //right side
+        quickSortRecursion(arr,low,pivot_index -1); //left side
+        quickSortRecursion(arr,pivot_index+1,high); //right side
     }
 }
 
